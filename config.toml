@@ -1,0 +1,15 @@
+baseurl = "https://kubernetes-patterns.io"
+title = "Kubernetes Patterns"
+author = "Bilgin Ibryam and Roland Huß"
+canonifyurls = true
+paginate = 3
+
+theme = "lean-launch"
+
+# googleAnalytics = "UA-123456"
+
+[params]
+tagline = "Reusable Elements for Designing Cloud Native Applications"
+# mailchimpURL = "//my-account.mailchimp.com/my-subscriber-url"
+
+twitter = "https://twitter.com/k8spatterns"

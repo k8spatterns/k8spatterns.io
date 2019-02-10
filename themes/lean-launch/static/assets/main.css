@@ -1,0 +1,150 @@
+body,
+html,
+p,
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body{
+	height: 100%;
+}
+
+body{
+	box-sizing: border-box;
+	border-top: 3px solid #444444;
+	background-color: #EBEBEE;
+	padding: 20px 20px;
+	height: 100%;
+	text-align: center;
+	font-size: 1.3rem;
+	font-family: "Open Sans";
+}
+	.logo{
+		float: left;
+		width: 50px;
+		height: 50px;
+	}
+
+	ul.social-icons{
+		float: right;
+		margin: 0;
+		padding: 0;
+	}
+
+	h1{
+		margin-top: 10%;
+		margin-bottom: 0;
+		color: #06385d;
+		font-family: "Nunito";
+		font-size: 3.4rem;
+		letter-spacing: 2px;
+		line-height: 1.0;
+	}
+		span.logo{
+			font-family: "Nunito";
+		}
+
+	img{
+		margin-bottom: 30px;
+		width: 530px;
+		text-align: center;
+		color: #8e132a;
+	}
+
+	p{
+		padding: 2rem 1rem;
+		text-align: center;
+		color: #555555;
+		font-weight: bold;
+	}
+
+	form{
+		margin: 0 auto;
+		width: 50%;
+		overflow: auto;
+	}
+		form input{
+			float: left;
+			border: none;
+			padding: 0;
+			height: 40px;
+		}
+			form input[type="email"]{
+				box-sizing: border-box;
+				border-right: none;
+				padding: 2px 10px;
+				width: 80%;
+			}
+
+			form input[type="submit"]{
+				background-color: #FFD700;
+				background-color: #8e132a;
+				width: 20%;
+				color: white;
+				font-weight: bold;
+			}
+	ul{
+		padding-top: 15px;
+		list-style-type: circle;
+	}
+		li{
+			display: inline-block;
+			margin: 0 11px;
+			list-style-type: circle;
+		}
+			a{
+				color: #444444;
+				text-decoration: underline;
+				font-size: 1.4rem;
+			}
+
+	#benefits{
+		display: flex;
+		margin: 50px auto 0;
+		width: 65%;
+	}
+		#benefits div{
+			width: 100%;
+		}
+
+		#benefits h2{
+			color: #444444;
+			font-size: 1.3rem;
+		}
+			#benefits i{
+				margin-right: 20px;
+			}
+
+		#benefits p{
+			padding-top: 10px;
+		}
+			p.benefit:first-child{
+			}
+
+
+
+@media (max-width: 950px){
+	#benefits{
+		width: 80%;
+	}
+}
+
+@media (max-width: 700px){
+	h1{
+		font-size: 3.0rem;
+	}
+
+	form{
+		width: 90%;
+	}
+
+	#benefits{
+		display: block;
+		width: 90%;
+	}
+		#benefits div{
+			width: 100%;
+		}
+}

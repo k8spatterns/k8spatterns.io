@@ -1,0 +1,12 @@
+name = "Lean Launch Page"
+license = "MIT"
+licenselink = "https://github.com/felicianotech/hugo-theme-lean-launch-page/blob/master/LICENSE"
+description = "A simple launch page useful for validing an idea in The Lean Startup way."
+homepage = "https://github.com/felicianotech/hugo-theme-lean-launch-page"
+tags = ["simple", "launch page", "single page", "landing-page"]
+features = ["mailchimp"]
+min_version = "0.35"
+
+[author]
+	name = "Ricardo N Feliciano"
+	homepage = "https://www.Feliciano.Tech"
