@@ -73,6 +73,27 @@ body{
 		color: #8e132a;
 	}
 
+	.shadowed img {
+		-webkit-transition: all 0.5s ease;
+		     -moz-transition: all 0.5s ease;
+		       -o-transition: all 0.5s ease;
+		      -ms-transition: all 0.5s ease;
+		          transition: all 0.5s ease;
+}
+
+	.shadowed img:hover {
+		  -webkit-transform: rotate(360deg);
+		     -moz-transform: rotate(360deg);
+		       -o-transform: rotate(360deg);
+		      -ms-transform: rotate(360deg);
+		          transform: rotate(360deg);
+	}
+
+	.shadowed img {
+		-webkit-filter: drop-shadow(5px 5px 5px #222);
+	   filter: drop-shadow(5px 5px 5px #222);
+}
+
 	p{
 		padding: 1rem 1rem;
 		text-align: center;
