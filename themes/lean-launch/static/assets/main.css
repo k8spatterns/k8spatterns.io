@@ -72,6 +72,7 @@ body{
 		color: #8e132a;
 	}
 
+/*
 	.shadowed img {
 		-webkit-transition: all 0.5s ease;
 		     -moz-transition: all 0.5s ease;
@@ -87,6 +88,7 @@ body{
 		      -ms-transform: rotate(360deg);
 		          transform: rotate(360deg);
 	}
+*/
 
 	.shadowed img {
 		-webkit-filter: drop-shadow(5px 5px 5px #222);
