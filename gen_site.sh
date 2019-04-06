@@ -22,6 +22,9 @@ echo "Generating site"
 
 hugo -v
 
+echo "Copying over examples"
+go run prepare_resource_files.go -target public
+
 # Commit & push everything
 cd public
 if [[ -n "$(git status -s)" ]] ; then
