@@ -1,0 +1,35 @@
+# A recreate (or fixed) Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-generator
+spec:
+  replicas: 3
+  strategy:
+    # Kill first all old Pods, then start the new version
+    type: Recreate
+  selector:
+    matchLabels:
+      app: random-generator
+  template:
+    metadata:
+      labels:
+        app: random-generator
+    spec:
+      containers:
+      - image: k8spatterns/random-generator:1.0
+        name: random-generator
+        env:
+        - name: PATTERN
+          value: Declarative Deployment
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 15
+        readinessProbe:
+          exec:
+            command: [ "stat", "/random-generator-ready" ]

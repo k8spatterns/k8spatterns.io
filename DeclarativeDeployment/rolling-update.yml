@@ -1,0 +1,45 @@
+# A rolling update Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-generator
+spec:
+  # More than 1 replica is required for a rolling update
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # Number of Pods which can be run temporarily in addition the replicas
+      # specified during an updated
+      # (so it could 4 in our case at max)
+      maxSurge: 1
+      # Number of Pods which can be unavaiable during the update. Here it could
+      # be that only 2 Pods are running at a time during the update
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: random-generator
+  template:
+    metadata:
+      labels:
+        app: random-generator
+    spec:
+      containers:
+      - image: k8spatterns/random-generator:1.0
+        name: random-generator
+        env:
+        - name: PATTERN
+          value: Declarative Deployment
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        # Readiness probes are very important for a RollingUpdate to work properly,
+        # so don't forget them
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 15
+        readinessProbe:
+          exec:
+            command: [ "stat", "/random-generator-ready" ]

@@ -1,0 +1,32 @@
+# Pod with node affinity
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      # Required rule to be fullfilled by a node for
+      # this pod to be scheduled. Here we are requiring
+      # a label "numberCores" with a value larger than 3
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: numberCores
+            operator: Gt
+            values: [ "3" ]
+      # Preferred rules which influence scheduling descission.
+      # Here we don't like to be scheduled on the Minikube master
+      # (but of course will be ignored if we are testing on Minikube with
+      # only one node available)
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 10
+        preference:
+          matchFields:
+          - key: metadata.name
+            operator: NotIn
+            values: [ "minikube" ]
+  containers:
+  - image: k8spatterns/random-generator:1.0
+    name: random-generator
