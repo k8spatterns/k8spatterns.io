@@ -9,7 +9,7 @@ jobs:
     - run:
         working_directory: ~/workdir
         command: |
-          git clone --depth 1 https://${GITHUB_TOKEN}@github.com/k8spatterns/k8spatterns.io.git
+          git clone https://${GITHUB_TOKEN}@github.com/k8spatterns/k8spatterns.io.git
     - run:
         working_directory: ~/workdir
         environment:
