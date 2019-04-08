@@ -1,0 +1,75 @@
+# Service account required for watching to resources
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: config-watcher-operator
+---
+# Bind to an appropriate permission
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: config-watcher:edit
+subjects:
+- kind: ServiceAccount
+  name: config-watcher-operator
+roleRef:
+  name: edit
+  kind: ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: config-watcher:crd
+subjects:
+- kind: ServiceAccount
+  name: config-watcher-operator
+roleRef:
+  name: config-watcher-crd
+  kind: Role
+  apiGroup: rbac.authorization.k8s.io
+---
+# Controller with kubeapi-proxy sidecar for easy access to the API server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    project: k8spatterns
+    pattern: Controller
+  name: config-watcher-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-watcher-operator
+  template:
+    metadata:
+      labels:
+        project: k8spatterns
+        pattern: Controller
+        app: config-watcher-operator
+    spec:
+      serviceAccountName: config-watcher-operator
+      containers:
+      - name: kubeapi-proxy
+        image: k8spatterns/kubeapi-proxy
+      - name: config-watcher
+        image: k8spatterns/curl-jq
+        env:
+         # The operator watches the namespace in which the operator
+         # itself is installed (by using the Downward API)
+         - name: WATCH_NAMESPACE
+           valueFrom:
+             fieldRef:
+               fieldPath: metadata.namespace
+        command:
+        - "sh"
+        - "/watcher/config-watcher-operator.sh"
+        volumeMounts:
+        - mountPath: "/watcher"
+          name: config-watcher-operator
+      volumes:
+      - name: config-watcher-operator
+        configMap:
+          name: config-watcher-operator

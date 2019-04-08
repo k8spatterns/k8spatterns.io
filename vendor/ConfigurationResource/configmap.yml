@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: random-generator-config
+data:
+  PATTERN: Configuration Resource
+  application.properties: |
+    # Random Generator config
+    log.file=/tmp/generator.log
+    version=1.0
+    server.port=7070
+  # Used with a prefix 'env.' for being picked up
+  # by a Pod's 'envFrom' declaration:
+  EXTRA_OPTIONS: "high-secure,native"
+  SEED: "432576345"
