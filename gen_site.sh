@@ -19,15 +19,17 @@ echo "Removing existing files"
 rm -rf public/*
 
 echo "Generating site"
-
 hugo -v
 
 echo "Copying over examples"
-go run prepare_resource_files.go -target public
+cp -r examples/* public/*
 
 # Commit & push everything
 cd public
 if [[ -n "$(git status -s)" ]] ; then
   echo "Updating gh-pages branch"
-  git add --all && git commit -m "[ci skip] Publishing to gh-pages" && git push --force
+  git config credential.helper 'cache --timeout=120'
+  git config user.email "ci@k8spatternsi.io"
+  git config user.name "k8spatterns-ci"
+  git add --all && git commit -m "Publishing to gh-pages" && git push --force https://${GITHUB_TOKEN}@github.com/k8spatterns/kubernetes-patterns.io.git gh-pages
 fi

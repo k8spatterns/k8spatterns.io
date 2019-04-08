@@ -1,0 +1,28 @@
+version: 2.1
+
+orbs:
+  hugo: circleci/hugo@0.1.0
+
+jobs:
+  # Update Website
+  website:
+    machine: true
+    steps:
+    - run:
+        working_directory: ~/workdir
+        command: |
+          git clone --depth 1 https://${GITHUB_TOKEN}@github.com/k8spatterns/kubernetes-patterns.io.git
+    - hugo/install:
+        version: "0.54.0"
+    - run:
+        working_directory: ~/workdir/k8spatterns.io
+        command: ./gen_site.sh
+
+workflows:
+  version: 2
+  k8spatterns.io:
+    jobs:
+    - website:
+        filters:
+          branches:
+            only: master
