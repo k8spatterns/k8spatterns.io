@@ -6,7 +6,6 @@ orbs:
 jobs:
   # Update Website
   website:
-    machine: true
     steps:
     - run:
         working_directory: ~/workdir
