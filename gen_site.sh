@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-if [[ -n "$(git status -s)" ]]; then
+set -o pipefail
+set -eu
+
+if [ -n "$(git status -s)" ]; then
   echo "The working directory is dirty. Please commit any pending changes."
   git status
   exit 1;
@@ -19,15 +22,15 @@ echo "Removing existing files"
 rm -rf public/*
 
 echo "Generating site"
-chmod a+x ./hugo
-./hugo -v
+chmod a+x ../hugo
+../hugo -v
 
 echo "Copying over examples"
 cp -r examples/* public/*
 
 # Commit & push everything
 cd public
-if [[ -n "$(git status -s)" ]] ; then
+if [ -n "$(git status -s)" ] ; then
   echo "Updating gh-pages branch"
   git config credential.helper 'cache --timeout=120'
   git config user.email "ci@k8spatternsi.io"
