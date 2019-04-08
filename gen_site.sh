@@ -19,7 +19,8 @@ echo "Removing existing files"
 rm -rf public/*
 
 echo "Generating site"
-hugo -v
+chmod a+x ./hugo
+./hugo -v
 
 echo "Copying over examples"
 cp -r examples/* public/*

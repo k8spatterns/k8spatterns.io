@@ -3,12 +3,13 @@ version: 2.1
 jobs:
   # Update Website
   website:
-    machine: true
+    docker:
+    - image: circleci/golang:1.12.2
     steps:
     - run:
         working_directory: ~/workdir
         command: |
-          git clone --depth 1 https://${GITHUB_TOKEN}@github.com/k8spatterns/kubernetes-patterns.io.git
+          git clone --depth 1 https://${GITHUB_TOKEN}@github.com/k8spatterns/k8spatterns.io.git
     - run:
         working_directory: ~/workdir/k8spatterns.io
         environment:
