@@ -37,5 +37,5 @@ if [ -n "$(git status -s)" ] ; then
   git config credential.helper 'cache --timeout=120'
   git config user.email "ci@k8spatternsi.io"
   git config user.name "k8spatterns-ci"
-  git add --all && git commit -m "Publishing to gh-pages" && git push --force https://${GITHUB_TOKEN}@github.com/k8spatterns/k8spatterns.io.git gh-pages
+  git add --all && git commit -m "Publishing to gh-pages [ci skip]" && git push --force https://${GITHUB_TOKEN}@github.com/k8spatterns/k8spatterns.io.git gh-pages
 fi
