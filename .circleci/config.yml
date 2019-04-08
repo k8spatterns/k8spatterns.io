@@ -6,10 +6,10 @@ orbs:
 jobs:
   # Update Website
   website:
+    docker:
+    - image: circleci/golang:1.12.2
     steps:
     - run:
-        docker:
-        - image: circleci/golang:1.12.2
         working_directory: ~/workdir
         command: |
           git clone --depth 1 https://${GITHUB_TOKEN}@github.com/k8spatterns/kubernetes-patterns.io.git
