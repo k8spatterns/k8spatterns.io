@@ -15,7 +15,7 @@ jobs:
         environment:
           HUGO_VERSION: 0.54.0
           HUGO_URL: https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz
-        command: echo "$HUGO_URL" && curl -sSL "$HUGO_URL" | tar -xz -C . hugo
+        command: curl -sSL "$HUGO_URL" | tar -xz -C . hugo
     - run:
         working_directory: ~/workdir/k8spatterns.io
         command: ./gen_site.sh
