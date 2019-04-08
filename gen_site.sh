@@ -3,6 +3,8 @@
 set -o pipefail
 set -eu
 
+set -x
+
 if [ -n "$(git status -s)" ]; then
   echo "The working directory is dirty. Please commit any pending changes."
   git status
@@ -26,7 +28,7 @@ chmod a+x ../hugo
 ../hugo -v
 
 echo "Copying over examples"
-cp -r examples/* public/*
+cp -r examples/* public
 
 # Commit & push everything
 cd public
