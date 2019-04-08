@@ -1,0 +1,71 @@
+# ConfigMap which holds the value of the data to serve by
+# the webapp
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webapp-config
+data:
+  message: "Welcome to Kubernetes Patterns !"
+---
+# Deployment for a super simple HTTP server which
+# serves the value of an environment variable to the browser.
+# The env-var is picked up from a config map
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  labels:
+    app: webapp
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: app
+        image: k8spatterns/mini-http-server
+        ports:
+        - containerPort: 8080
+        env:
+        # Message to print is taken from the ConfigMap as env var.
+        # Note that changes to the ConfigMap require a restart of the Pod
+        - name: MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: message
+---
+# Service for accessing the web server via port 8080
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: webapp
+---
+# Ingress object for external access to the webserver.
+# If running on minikube, open "https://webapp.$(minikube ip).nip.io"
+# in the browser and don't forget to enable ingress on minikube via
+# "minikube addons enable ingress"
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: webapp
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: webapp
+          servicePort: 8080
+        path: "/"
