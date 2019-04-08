@@ -13,8 +13,12 @@ jobs:
         working_directory: ~/workdir
         command: |
           git clone --depth 1 https://${GITHUB_TOKEN}@github.com/k8spatterns/kubernetes-patterns.io.git
-    - hugo/install:
-        version: "0.54.0"
+    - run:
+        working_directory: ~/workdir/k8spatterns.io
+        environment:
+          HUGO_VERSION: 0.54.0
+          HUGO_URL: https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
+        command: curl -sSL "$HUGO_URL" | tar -xz -C . hugo
     - run:
         working_directory: ~/workdir/k8spatterns.io
         command: ./gen_site.sh
