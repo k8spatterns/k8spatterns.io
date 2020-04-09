@@ -6,5 +6,5 @@ draft: false
 
 ## Kubernetes Patterns
 
-Landing page for the Book "Kubernetes Patterns - Reusable Elements for Designing Cloud Native Applications" by https://github.com/bibryam[Bilgin Ibryam] and https://github.com/rhuss[Roland Huß]
+Landing page for the Book "Kubernetes Patterns - Reusable Elements for Designing Cloud Native Applications" by https://twitter.com/bibryam[Bilgin Ibryam] and https://twitter.com/ro14nd[Roland Huß]
 
