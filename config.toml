@@ -1,4 +1,4 @@
-baseurl = "https://kubernetes-patterns.io"
+baseurl = "https://k8spatterns.io"
 title = "Kubernetes Patterns"
 author = "Bilgin Ibryam and Roland Huß"
 canonifyurls = true
