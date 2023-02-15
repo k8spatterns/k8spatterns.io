@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes Patterns</title>
-    <link>https://kubernetes-patterns.io/</link>
+    <link>https://k8spatterns.io/</link>
     <description>Recent content on Kubernetes Patterns</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 10 Feb 2019 09:49:59 +0100</lastBuildDate>
     
-	<atom:link href="https://kubernetes-patterns.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://k8spatterns.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kubernetes Patterns</title>
-      <link>https://kubernetes-patterns.io/</link>
+      <link>https://k8spatterns.io/</link>
       <pubDate>Sun, 10 Feb 2019 09:49:59 +0100</pubDate>
       
-      <guid>https://kubernetes-patterns.io/</guid>
+      <guid>https://k8spatterns.io/</guid>
       <description>Kubernetes Patterns Landing page for the Book &amp;ldquo;Kubernetes Patterns - Reusable Elements for Designing Cloud Native Applications&amp;rdquo; by https://twitter.com/bibryam[Bilgin Ibryam] and https://twitter.com/ro14nd[Roland Huß]</description>
     </item>
     

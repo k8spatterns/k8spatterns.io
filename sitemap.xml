@@ -3,23 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kubernetes-patterns.io/</loc>
+    <loc>https://k8spatterns.io/</loc>
     <lastmod>2019-02-10T09:49:59+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kubernetes-patterns.io/categories/</loc>
+    <loc>https://k8spatterns.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kubernetes-patterns.io/</loc>
+    <loc>https://k8spatterns.io/</loc>
     <lastmod>2019-02-10T09:49:59+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kubernetes-patterns.io/tags/</loc>
+    <loc>https://k8spatterns.io/tags/</loc>
     <priority>0</priority>
   </url>
   
