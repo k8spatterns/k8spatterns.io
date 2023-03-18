@@ -15,6 +15,9 @@ jobs:
       with:
         path: workdir/k8spatterns.io
 
+    - name: Fetch branch gh-pages
+      run: git fetch origin gh-pages
+    
     - name: Install Hugo
       run: |
         curl -sSL "https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz" | tar -xz -C . hugo
