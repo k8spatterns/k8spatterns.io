@@ -1,0 +1,23 @@
+name: Update Website
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    container:
+      image: klakegg/hugo:0.54.0
+
+    steps:
+    - name: Checkout current repository
+      uses: actions/checkout@v2
+      with:
+        path: workdir/k8spatterns.io
+
+    - name: Generate site
+      run: ./gen_site.sh
+      working-directory: workdir/k8spatterns.io
+
