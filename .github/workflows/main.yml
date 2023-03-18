@@ -8,8 +8,6 @@ on:
 jobs:
   website:
     runs-on: ubuntu-latest
-    container:
-      image: klakegg/hugo:0.54.0
 
     steps:
     - name: Checkout current repository
@@ -17,6 +15,12 @@ jobs:
       with:
         path: workdir/k8spatterns.io
 
+    - name: Install Hugo
+      run: |
+        curl -sSL "https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz" | tar -xz -C . hugo
+        sudo mv hugo /usr/local/bin/
+      working-directory: workdir
+    
     - name: Generate site
       run: ./gen_site.sh
       working-directory: workdir/k8spatterns.io
