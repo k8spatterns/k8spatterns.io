@@ -5,6 +5,9 @@ set -eu
 
 set -x
 
+git branch -l
+git remote
+
 if [ -n "$(git status -s)" ]; then
   echo "The working directory is dirty. Please commit any pending changes."
   git status
@@ -24,8 +27,7 @@ echo "Removing existing files"
 rm -rf public/*
 
 echo "Generating site"
-chmod a+x ../hugo
-../hugo -v
+hugo -v
 
 echo "Copying over examples"
 cp -r examples/* public
@@ -35,7 +37,7 @@ cd public
 if [ -n "$(git status -s)" ] ; then
   echo "Updating gh-pages branch"
   git config credential.helper 'cache --timeout=120'
-  git config user.email "ci@k8spatternsi.io"
+  git config user.email "gh@k8spatterns.io"
   git config user.name "k8spatterns-ci"
-  git add --all && git commit -m "Publishing to gh-pages [ci skip]" && git push --force https://${GITHUB_TOKEN}@github.com/k8spatterns/k8spatterns.io.git gh-pages
+  git add --all && git commit -m "Publishing to gh-pages [ci skip]" && git push --force gh-pages
 fi
