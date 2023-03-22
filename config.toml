@@ -9,7 +9,7 @@ theme = "lean-launch"
 # googleAnalytics = "UA-123456"
 
 [params]
-tagline = "Reusable Elements for Designing Cloud-Native Applications"
+tagline = "Reusable Elements for Designing Cloud Native Applications"
 # mailchimpURL = "//my-account.mailchimp.com/my-subscriber-url"
 
 twitter = "https://twitter.com/k8spatterns"
