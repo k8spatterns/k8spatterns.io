@@ -37,7 +37,7 @@ cd public
 if [ -n "$(git status -s)" ] ; then
   echo "Updating gh-pages branch"
   git config credential.helper 'cache --timeout=120'
-  git config user.email "gh@k8spatterns.io"
+  git config user.email "gh@k8spatterns.com"
   git config user.name "k8spatterns-ci"
   git add --all && git commit -m "Publishing to gh-pages [ci skip]" && git push --force origin gh-pages
 fi
